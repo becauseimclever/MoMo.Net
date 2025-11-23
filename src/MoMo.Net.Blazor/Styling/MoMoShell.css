@@ -1,0 +1,56 @@
+/* MoMo Shell - Application container with themable menu bar */
+
+.momo-shell {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Top and Bottom positions use column layout */
+.momo-shell-top,
+.momo-shell-bottom {
+    flex-direction: column;
+}
+
+/* Left and Right positions use row layout */
+.momo-shell-left,
+.momo-shell-right {
+    flex-direction: row;
+}
+
+/* Menu bar base styles */
+.momo-shell-menubar {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    z-index: 1000;
+}
+
+/* Horizontal menu bars (Top/Bottom) */
+.momo-shell-top .momo-shell-menubar,
+.momo-shell-bottom .momo-shell-menubar {
+    width: 100%;
+    flex-direction: row;
+}
+
+/* Vertical menu bars (Left/Right) */
+.momo-shell-left .momo-shell-menubar,
+.momo-shell-right .momo-shell-menubar {
+    height: 100%;
+    flex-direction: column;
+}
+
+/* Content area base styles */
+.momo-shell-content {
+    flex: 1;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+/* Ensure proper scrolling in content area */
+.momo-shell-content > * {
+    box-sizing: border-box;
+}

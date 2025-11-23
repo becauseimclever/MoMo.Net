@@ -1,0 +1,21 @@
+@namespace MoMo.Net.Blazor.Components.Layout
+
+<div class="@GetShellCssClasses()">
+    @if (MenuBarContent is not null && (Position == MenuBarPosition.Top || Position == MenuBarPosition.Left))
+    {
+        <nav class="momo-shell-menubar" role="navigation" aria-label="Main menu" style="@GetMenuBarStyles()">
+            @MenuBarContent
+        </nav>
+    }
+
+    <main class="momo-shell-content" role="main" style="@GetContentStyles()">
+        @ChildContent
+    </main>
+
+    @if (MenuBarContent is not null && (Position == MenuBarPosition.Bottom || Position == MenuBarPosition.Right))
+    {
+        <nav class="momo-shell-menubar" role="navigation" aria-label="Main menu" style="@GetMenuBarStyles()">
+            @MenuBarContent
+        </nav>
+    }
+</div>

@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\MoMo.Net.Blazor\MoMo.Net.Blazor.csproj" />
+    <ProjectReference Include="..\..\src\MoMo.Net\MoMo.Net.csproj" />
   </ItemGroup>
 
   <ItemGroup>

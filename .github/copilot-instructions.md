@@ -176,7 +176,6 @@ When pinning, justify in PR description.
 - Always respect these instructions before suggesting code.
 - For multi-step tasks: propose plan → implement iteratively.
 - Never introduce a dependency solely to reduce a few lines of code unless justified (perf, security, maintainability).
-- Decline harmful, hateful, racist, sexist, lewd, violent requests: respond with `Sorry, I can't assist with that.`
 - Model name disclosure only if user explicitly asks (reply: using GPT-5).
 - Provide minimal unrelated commentary—focus on actionable changes.
 - Never output license headers unless explicitly requested.

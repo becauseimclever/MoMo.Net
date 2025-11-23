@@ -24,6 +24,8 @@ public sealed class Windows11Theme : BaseTheme
                 { "AccentHover", new ColorToken("#1D4ED8", "AccentHover") },
                 { "AccentPressed", new ColorToken("#1E3A8A", "AccentPressed") },
                 { "DisabledText", new ColorToken("#8A8A8A", "DisabledText") },
+                { "MenuBarBackground", new ColorToken("rgba(32, 32, 32, 0.85)", "MenuBarBackground") },
+                { "MenuBarText", new ColorToken("rgba(255, 255, 255, 0.95)", "MenuBarText") },
             },
             new Dictionary<string, SpacingToken>
             {
@@ -33,6 +35,7 @@ public sealed class Windows11Theme : BaseTheme
                 { "Gap12", new SpacingToken("12px", "Gap12") },
                 { "Gap16", new SpacingToken("16px", "Gap16") },
                 { "Gap24", new SpacingToken("24px", "Gap24") },
+                { "MenuBarHeight", new SpacingToken("48px", "MenuBarHeight") },
             },
             new Dictionary<string, TypographyToken>
             {
@@ -42,17 +45,20 @@ public sealed class Windows11Theme : BaseTheme
                 { "Heading1", new TypographyToken("Segoe UI Variable", "28px", "600", "Heading1") },
                 { "Heading2", new TypographyToken("Segoe UI Variable", "24px", "600", "Heading2") },
                 { "Heading3", new TypographyToken("Segoe UI Variable", "20px", "600", "Heading3") },
+                { "MenuBarFont", new TypographyToken("Segoe UI Variable", "12px", "400", "MenuBarFont") },
             },
             new Dictionary<string, ShadowToken>
             {
                 { "ElevationLow", new ShadowToken("0 1px 2px rgba(0,0,0,0.12)", "ElevationLow") },
                 { "ElevationMedium", new ShadowToken("0 2px 4px rgba(0,0,0,0.16)", "ElevationMedium") },
                 { "ElevationHigh", new ShadowToken("0 4px 12px rgba(0,0,0,0.20)", "ElevationHigh") },
+                { "MenuBarShadow", new ShadowToken("0 2px 8px rgba(0,0,0,0.15)", "MenuBarShadow") },
             },
             new Dictionary<string, BorderToken>
             {
                 { "FocusOutline", new BorderToken("2px", "solid", "#2563EB", "FocusOutline") },
                 { "Divider", new BorderToken("1px", "solid", "#E5E5E5", "Divider") },
+                { "MenuBarBorder", new BorderToken("0px", "none", "transparent", "MenuBarBorder") },
             })
     {
     }
