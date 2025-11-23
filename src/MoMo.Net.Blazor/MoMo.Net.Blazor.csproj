@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    
+    <!-- Package Metadata -->
+    <PackageId>MoMo.Net.Blazor</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>MoMo.Net Contributors</Authors>
+    <Company>MoMo.Net</Company>
+    <Description>Blazor UI components for the MoMo.Net design system</Description>
+    <Copyright>Copyright © 2025 MoMo.Net Contributors</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/becauseimclever/MoMo.Net</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/becauseimclever/MoMo.Net</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>blazor;design-system;ui-components;theming;razor</PackageTags>
+    
+    <!-- SourceLink Support -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <DebugType>embedded</DebugType>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MoMo.Net\MoMo.Net.csproj" />
+  </ItemGroup>
+
+</Project>
