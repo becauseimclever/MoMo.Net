@@ -63,18 +63,21 @@ Every feature follows Red → Green → Refactor:
 3. Refactor safely (tests remain green).
 
 Testing stack:
-- xUnit for unit tests.
+- xUnit for unit tests (use built-in `Assert` methods only).
 - bUnit for Blazor component tests.
 - Optional: Verify library-level contracts with snapshot tests (only if stable and reviewed; avoid flaky snapshots).
+
+**PROHIBITED in tests:**
+- FluentAssertions or any third-party assertion libraries. Use xUnit's built-in `Assert` class exclusively.
+- Sleeping / timing hacks.
+- Reliance on external network or file system (unless explicitly added infra layer with abstractions + test doubles).
 
 Coverage goals:
 - Core theming & token logic: ~100% statement/branch.
 - Component rendering paths: high coverage of branches & states.
 - Public API methods: must have at least one direct test.
 
-Prohibited in tests:
-- Sleeping / timing hacks.
-- Reliance on external network or file system (unless explicitly added infra layer with abstractions + test doubles).
+
 
 ## 7. Coding Standards
 - C# latest language features allowed if supported by target LTS.
@@ -134,7 +137,6 @@ If `net10.0` not recognized, temporarily use latest LTS (e.g., `net8.0`) but kee
 Use the dotnet CLI (package manager) with fully qualified path:
 ```
 "C:\Program Files\dotnet\dotnet.exe" add "C:\ws\MoMo.Net\tests\MoMo.Net.Blazor.Tests" package bunit
-"C:\Program Files\dotnet\dotnet.exe" add "C:\ws\MoMo.Net\tests\MoMo.Net.Tests" package FluentAssertions
 ```
 Do NOT pin versions unless:
 - A regression exists in latest.

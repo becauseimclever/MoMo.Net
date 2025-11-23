@@ -3,6 +3,8 @@
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);SA1633;SA1313;SA1309</NoWarn><!-- Disable file header requirement, record parameter naming, and underscore field rule -->
     <Authors>MoMo.Net Contributors</Authors>
     <Company>MoMo.Net</Company>
     <Copyright>Copyright © 2025 MoMo.Net Contributors</Copyright>
