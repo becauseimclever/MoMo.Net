@@ -1,0 +1,12 @@
+.momo-taskbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+}
+
+.momo-taskbar > * {
+    flex-shrink: 0;
+}

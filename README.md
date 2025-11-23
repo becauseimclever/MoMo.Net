@@ -98,6 +98,19 @@ MoMo.Net follows [Semantic Versioning](https://semver.org/):
 - **Current version**: 0.1.0 (pre-release)
 - **Target 1.0.0**: After API review and stability milestone
 
+## Assets & Attribution
+
+### Desktop Wallpaper
+
+The default desktop background image used in sample applications is provided by **Smashing Magazine**:
+
+- **Title**: "A Jelly November"
+- **Source**: [Smashing Magazine - Monthly Desktop Wallpapers (November 2022)](https://www.smashingmagazine.com/2022/10/desktop-wallpaper-calendars-november-2022/)
+- **URL**: https://www.smashingmagazine.com/files/wallpapers/nov-22/a-jelly-november/nocal/nov-22-a-jelly-november-nocal-1920x1080.jpg
+- **License**: Free for personal and commercial use (as published by Smashing Magazine)
+
+We are grateful to Smashing Magazine for publishing beautiful, free wallpapers for the community. The wallpaper demonstrates the desktop background feature and can be replaced by users with their own images.
+
 ## License
 
 Copyright © 2025 MoMo.Net Contributors

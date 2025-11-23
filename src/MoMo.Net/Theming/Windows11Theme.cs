@@ -26,6 +26,16 @@ public sealed class Windows11Theme : BaseTheme
                 { "DisabledText", new ColorToken("#8A8A8A", "DisabledText") },
                 { "MenuBarBackground", new ColorToken("rgba(32, 32, 32, 0.85)", "MenuBarBackground") },
                 { "MenuBarText", new ColorToken("rgba(255, 255, 255, 0.95)", "MenuBarText") },
+
+                // Taskbar + Start + Desktop additions (Feature: Windows 11 Taskbar)
+                { "TaskbarBackground", new ColorToken("rgba(243, 243, 243, 0.85)", "TaskbarBackground") },
+                { "TaskbarBorder", new ColorToken("#e5e5e5", "TaskbarBorder") },
+                { "StartButtonBackground", new ColorToken("transparent", "StartButtonBackground") },
+                { "StartButtonHoverBackground", new ColorToken("rgba(0, 0, 0, 0.05)", "StartButtonHoverBackground") },
+                { "StartButtonActiveBackground", new ColorToken("rgba(0, 0, 0, 0.08)", "StartButtonActiveBackground") },
+                { "StartButtonIcon", new ColorToken("#0078d4", "StartButtonIcon") },
+                { "DesktopBackground", new ColorToken("linear-gradient(135deg, #667eea 0%, #764ba2 100%)", "DesktopBackground") },
+                { "DesktopBackgroundFallback", new ColorToken("#667eea", "DesktopBackgroundFallback") },
             },
             new Dictionary<string, SpacingToken>
             {
@@ -36,6 +46,11 @@ public sealed class Windows11Theme : BaseTheme
                 { "Gap16", new SpacingToken("16px", "Gap16") },
                 { "Gap24", new SpacingToken("24px", "Gap24") },
                 { "MenuBarHeight", new SpacingToken("48px", "MenuBarHeight") },
+
+                // Explicit taskbar/start sizing
+                { "TaskbarHeight", new SpacingToken("48px", "TaskbarHeight") },
+                { "TaskbarPadding", new SpacingToken("4px 8px", "TaskbarPadding") },
+                { "StartButtonSize", new SpacingToken("40px", "StartButtonSize") },
             },
             new Dictionary<string, TypographyToken>
             {
@@ -53,12 +68,17 @@ public sealed class Windows11Theme : BaseTheme
                 { "ElevationMedium", new ShadowToken("0 2px 4px rgba(0,0,0,0.16)", "ElevationMedium") },
                 { "ElevationHigh", new ShadowToken("0 4px 12px rgba(0,0,0,0.20)", "ElevationHigh") },
                 { "MenuBarShadow", new ShadowToken("0 2px 8px rgba(0,0,0,0.15)", "MenuBarShadow") },
+                { "TaskbarShadow", new ShadowToken("0 -2px 8px rgba(0, 0, 0, 0.12)", "TaskbarShadow") },
             },
             new Dictionary<string, BorderToken>
             {
                 { "FocusOutline", new BorderToken("2px", "solid", "#2563EB", "FocusOutline") },
                 { "Divider", new BorderToken("1px", "solid", "#E5E5E5", "Divider") },
                 { "MenuBarBorder", new BorderToken("0px", "none", "transparent", "MenuBarBorder") },
+
+                // Start button borders (border + radius semantic separation)
+                { "StartButtonBorder", new BorderToken("0px", "none", "transparent", "StartButtonBorder") },
+                { "StartButtonRadius", new BorderToken("4px", "solid", "transparent", "StartButtonRadius") },
             })
     {
     }

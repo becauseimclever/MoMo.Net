@@ -1,0 +1,54 @@
+﻿@inherits LayoutComponentBase
+@using MoMo.Net.Blazor.Components.Layout
+@using MoMo.Net.Blazor.Components.Controls
+@using MoMo.Net.Theming
+@inject IThemeManager ThemeManager
+
+<MoMoShell Position="MenuBarPosition.Bottom"
+           Theme="@currentTheme"
+           DesktopBackgroundImage="_content/MoMo.Net.Blazor/images/default-desktop-bg.jpg">
+    <MenuBarContent>
+        <div style="display: flex; align-items: center; gap: 8px; width: 100%; padding: 0 8px;">
+            <MoMoStartButton OnClick="@HandleStartClick" Theme="@currentTheme" />
+            <div style="flex: 1;"></div>
+            <span style="font-size: 0.875rem;">MoMo.Net Demo - Server</span>
+        </div>
+    </MenuBarContent>
+    <ChildContent>
+        @Body
+    </ChildContent>
+</MoMoShell>
+
+@code {
+    private ITheme? currentTheme;
+
+    protected override void OnInitialized()
+    {
+        currentTheme = ThemeManager.CurrentTheme;
+        ThemeManager.ThemeChanged += OnThemeChanged;
+    }
+
+    private void OnThemeChanged(object? sender, ThemeChangedEventArgs e)
+    {
+        currentTheme = e.NewTheme;
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void HandleStartClick()
+    {
+        // Placeholder for Start menu functionality (future phase)
+        // For now, just log to console
+        Console.WriteLine("Start button clicked");
+    }
+
+    public void Dispose()
+    {
+        ThemeManager.ThemeChanged -= OnThemeChanged;
+    }
+}
+
+<div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">🗙</span>
+</div>

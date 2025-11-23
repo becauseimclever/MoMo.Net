@@ -170,4 +170,88 @@ public sealed class MoMoShellTests : BunitContext
         Assert.Contains("Menu", cut.Markup);
         Assert.Contains("Content", cut.Markup);
     }
+
+    [Fact]
+    public void MoMoShell_AppliesDesktopBackgroundImage_WhenProvided()
+    {
+        // Arrange & Act
+        IRenderedComponent<MoMoShell> cut = Render<MoMoShell>(parameters => parameters
+            .Add(p => p.DesktopBackgroundImage, "/_content/MoMo.Net.Blazor/images/test-bg.jpg"));
+
+        // Assert
+        string markup = cut.Markup;
+        Assert.Contains("background-image: url('/_content/MoMo.Net.Blazor/images/test-bg.jpg')", markup);
+    }
+
+    [Fact]
+    public void MoMoShell_AppliesDesktopBackgroundColor_WhenProvidedAndNoImage()
+    {
+        // Arrange & Act
+        IRenderedComponent<MoMoShell> cut = Render<MoMoShell>(parameters => parameters
+            .Add(p => p.DesktopBackgroundColor, "#667eea"));
+
+        // Assert
+        string markup = cut.Markup;
+        Assert.Contains("background-color: #667eea", markup);
+    }
+
+    [Fact]
+    public void MoMoShell_UsesThemeDesktopBackground_WhenNoParametersProvided()
+    {
+        // Arrange
+        ITheme theme = new Windows11Theme();
+
+        // Act
+        IRenderedComponent<MoMoShell> cut = Render<MoMoShell>(parameters => parameters
+            .Add(p => p.Theme, theme));
+
+        // Assert
+        string markup = cut.Markup;
+
+        // Should contain the gradient from Windows11Theme DesktopBackground token
+        Assert.Contains("linear-gradient(135deg, #667eea 0%, #764ba2 100%)", markup);
+    }
+
+    [Fact]
+    public void MoMoShell_DesktopBackgroundImage_TakesPrecedenceOverColor()
+    {
+        // Arrange & Act
+        IRenderedComponent<MoMoShell> cut = Render<MoMoShell>(parameters => parameters
+            .Add(p => p.DesktopBackgroundImage, "/_content/test.jpg")
+            .Add(p => p.DesktopBackgroundColor, "#667eea"));
+
+        // Assert
+        string markup = cut.Markup;
+        Assert.Contains("background-image: url('/_content/test.jpg')", markup);
+
+        // Should also include fallback color
+        Assert.Contains("background-color: #667eea", markup);
+    }
+
+    [Fact]
+    public void MoMoShell_HandlesNullDesktopBackgroundGracefully()
+    {
+        // Arrange & Act
+        IRenderedComponent<MoMoShell> cut = Render<MoMoShell>(parameters => parameters
+            .Add(p => p.ChildContent, builder => builder.AddContent(0, "Content")));
+
+        // Assert - Should render without throwing
+        string markup = cut.Markup;
+        Assert.NotNull(markup);
+        Assert.Contains("Content", markup);
+    }
+
+    [Fact]
+    public void MoMoShell_DesktopBackgroundImage_IncludesProperCssForCoverage()
+    {
+        // Arrange & Act
+        IRenderedComponent<MoMoShell> cut = Render<MoMoShell>(parameters => parameters
+            .Add(p => p.DesktopBackgroundImage, "/_content/bg.jpg"));
+
+        // Assert
+        string markup = cut.Markup;
+        Assert.Contains("background-size: cover", markup);
+        Assert.Contains("background-position: center", markup);
+        Assert.Contains("background-repeat: no-repeat", markup);
+    }
 }

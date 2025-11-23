@@ -43,6 +43,20 @@ public partial class MoMoShell : ComponentBase
     public ITheme? Theme { get; set; }
 
     /// <summary>
+    /// Gets or sets an optional desktop background image URL.
+    /// When provided, this will be used as the background for the content area.
+    /// </summary>
+    [Parameter]
+    public string? DesktopBackgroundImage { get; set; }
+
+    /// <summary>
+    /// Gets or sets an optional desktop background color.
+    /// Used as a fallback when no image is provided or as a background while the image loads.
+    /// </summary>
+    [Parameter]
+    public string? DesktopBackgroundColor { get; set; }
+
+    /// <summary>
     /// Generates the CSS classes for the shell container based on position and custom class.
     /// </summary>
     /// <returns>A space-separated string of CSS classes.</returns>
@@ -139,18 +153,42 @@ public partial class MoMoShell : ComponentBase
     /// <returns>A CSS style string.</returns>
     private string GetContentStyles()
     {
-        // Content area can have theme-based background if needed
-        if (this.Theme is null)
-        {
-            return string.Empty;
-        }
-
         System.Text.StringBuilder styles = new System.Text.StringBuilder();
 
-        MoMo.Net.Tokens.ColorToken? contentBg = this.Theme.GetColor("PrimaryBackground");
-        if (contentBg is not null)
+        // Priority 1: Explicit DesktopBackgroundColor parameter
+        // Priority 2: Theme DesktopBackground token
+        // Priority 3: Theme PrimaryBackground token
+        string? backgroundColor = this.DesktopBackgroundColor;
+
+        if (string.IsNullOrWhiteSpace(backgroundColor) && this.Theme is not null)
         {
-            styles.Append($"background-color: {contentBg.Value}; ");
+            MoMo.Net.Tokens.ColorToken? desktopBg = this.Theme.GetColor("DesktopBackground");
+            if (desktopBg is not null)
+            {
+                backgroundColor = desktopBg.Value;
+            }
+            else
+            {
+                MoMo.Net.Tokens.ColorToken? contentBg = this.Theme.GetColor("PrimaryBackground");
+                if (contentBg is not null)
+                {
+                    backgroundColor = contentBg.Value;
+                }
+            }
+        }
+
+        if (!string.IsNullOrWhiteSpace(backgroundColor))
+        {
+            styles.Append($"background-color: {backgroundColor}; ");
+        }
+
+        // Apply desktop background image if provided
+        if (!string.IsNullOrWhiteSpace(this.DesktopBackgroundImage))
+        {
+            styles.Append($"background-image: url('{this.DesktopBackgroundImage}'); ");
+            styles.Append("background-size: cover; ");
+            styles.Append("background-position: center; ");
+            styles.Append("background-repeat: no-repeat; ");
         }
 
         return styles.ToString();
